@@ -4,11 +4,14 @@ import Form from "./form";
 import { useState, useEffect } from "react";
 
 const Page = () => {
-  const [language_code, setLanguageCode] = useState(
-    navigator.language.split("-")[0] || "en"
-  );
+  const [language_code, setLanguageCode] = useState(() => {
+    const lang = navigator.language.split("-")[0];
+    return lang === "ru" ? "ru" : "en";
+  });
+
   const [t, setT] = useState({});
-  const bookURL = language_code === "en" ? "/book-en.png" : "/book-ru.png";
+  const bookURL = language_code === "ru" ? "/book-ru.png" : "/book-en.png";
+
   const handleFetchLocale = async () => {
     // Load translations
     fetch(`/locales/${language_code}.json`)
@@ -25,9 +28,24 @@ const Page = () => {
           });
       });
   };
+
   useEffect(() => {
     handleFetchLocale();
   }, [language_code]);
+
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      const lang = navigator.language.split("-")[0];
+      setLanguageCode(lang === "ru" ? "ru" : "en");
+    };
+
+    window.addEventListener("languagechange", handleLanguageChange);
+
+    return () => {
+      window.removeEventListener("languagechange", handleLanguageChange);
+    };
+  }, []);
+
   return (
     <div className="pt-4 relative max-w-7xl mx-auto h-full xl:h-screen xl:overflow-hidden">
       <div className="fixed top-0 left-0 w-1/2 h-full bg-white bg-opacity-10 hidden xl:block"></div>
@@ -79,7 +97,7 @@ const Page = () => {
       </div>
 
       <div className="xl:hidden">
-        <Form t={t} />
+        <Form t={t} locale={language_code} />
       </div>
     </div>
   );

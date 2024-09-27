@@ -1,10 +1,10 @@
 "use client";
 
 import PhoneInput from "react-phone-number-input";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import "react-phone-number-input/style.css";
 import { validateName, validateEmail, validatePhone } from "./validators";
-const Form = ({ t }) => {
+const Form = ({ t, locale }) => {
   useEffect(() => {
     console.log(t, "t");
   }, [t]);
@@ -18,10 +18,6 @@ const Form = ({ t }) => {
   //   const [checkboxChecked, setCheckboxChecked] = useState(false);
   //   const [checkboxError, setCheckboxError] = useState("");
   const [defaultCountry, setDefaultCountry] = useState("US");
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [locale, setLocale] = useState("en");
-
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchCountry = async () => {
@@ -64,7 +60,7 @@ const Form = ({ t }) => {
     // console.log("validPhone", validPhone);
     // setIsPhoneValid(validPhone);
 
-    setLoading(true);
+    // setLoading(true);
     console.log("see me here");
     event.preventDefault();
     setNameError(validateName(inputValueName));

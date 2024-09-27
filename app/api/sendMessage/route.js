@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
-    const { name, email, phone_number, locale } = await req.json();
+    const { name, email, phone_number } = await req.json();
 
     const apiUrl =
       "https://binorix.bitrix24.ru/rest/84/vkjnlsum474ykygo/crm.lead.list";
