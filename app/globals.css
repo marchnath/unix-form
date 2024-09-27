@@ -2,26 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* globals.css */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: url("/bg-image.png") no-repeat center center fixed;
+  background-size: cover;
+}
+.PhoneInputCountry {
+  padding: 14px 8px;
+  border-radius: 8px;
+  background-color: #e9e5ff;
+  margin-right: 8px;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.PhoneInputInput {
+  outline: none;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  color: #182654 !important;
+}
+
+.PhoneInputCountryIcon,
+.PhoneInputCountryIcon--border,
+.PhoneInputCountryIconImg {
+  border: 0 !important;
+  object-fit: cover;
+  margin-right: 10px;
+  box-shadow: none !important;
+}
+
+.PhoneInputCountrySelectArrow {
+  width: 7px !important;
+  height: 7px !important;
+  margin-right: 2px !important;
 }
