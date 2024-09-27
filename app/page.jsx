@@ -4,11 +4,7 @@ import Form from "./form";
 import { useState, useEffect } from "react";
 
 const Page = () => {
-  const [language_code, setLanguageCode] = useState(() => {
-    const lang = navigator.language.split("-")[0];
-    return lang === "ru" ? "ru" : "en";
-  });
-
+  const [language_code, setLanguageCode] = useState("en"); // Default to English initially
   const [t, setT] = useState({});
   const bookURL = language_code === "ru" ? "/book-ru.png" : "/book-en.png";
 
@@ -34,6 +30,9 @@ const Page = () => {
   }, [language_code]);
 
   useEffect(() => {
+    const lang = navigator.language.split("-")[0];
+    setLanguageCode(lang === "ru" ? "ru" : "en");
+
     const handleLanguageChange = () => {
       const lang = navigator.language.split("-")[0];
       setLanguageCode(lang === "ru" ? "ru" : "en");
