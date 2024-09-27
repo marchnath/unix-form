@@ -29,22 +29,6 @@ const Page = () => {
     handleFetchLocale();
   }, [language_code]);
 
-  useEffect(() => {
-    const lang = navigator.language.split("-")[0];
-    setLanguageCode(lang === "ru" ? "ru" : "en");
-
-    const handleLanguageChange = () => {
-      const lang = navigator.language.split("-")[0];
-      setLanguageCode(lang === "ru" ? "ru" : "en");
-    };
-
-    window.addEventListener("languagechange", handleLanguageChange);
-
-    return () => {
-      window.removeEventListener("languagechange", handleLanguageChange);
-    };
-  }, []);
-
   return (
     <div className="pt-4 relative max-w-7xl mx-auto h-full xl:h-screen xl:overflow-hidden">
       <div className="fixed top-0 left-0 w-1/2 h-full bg-white bg-opacity-10 hidden xl:block"></div>
