@@ -26,6 +26,16 @@ const Page = () => {
   };
 
   useEffect(() => {
+    // Detect browser language and set language_code
+    const detectLanguage = () => {
+      const browserLang = navigator.language || navigator.userLanguage;
+      setLanguageCode(browserLang.startsWith("ru") ? "ru" : "en");
+    };
+
+    detectLanguage();
+  }, []); // Empty dependency array ensures this runs only once when the component mounts
+
+  useEffect(() => {
     handleFetchLocale();
   }, [language_code]);
 
