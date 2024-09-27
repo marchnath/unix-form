@@ -46,7 +46,7 @@ const Page = () => {
         <Image src="/logo.svg" width={63} height={38} />
       </nav>
       <div className="p-4 xl:p-0 z-10 max-w-[581px] xl:mt-10">
-        <h1 className="text-[28px] text-white sm:text-[50px] font-semibold sm:font-medium leading-[60px]">
+        <h1 className="text-[28px] text-white sm:text-[50px] font-semibold sm:font-medium xl:eading-[60px]">
           {t["head text"]}
         </h1>
         <p className="border-l-4 text-white border-[#8861FF] text-xl sm:text-2xl px-4 my-4">
