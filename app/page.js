@@ -56,7 +56,7 @@ const Page = () => {
           <Form t={t} />
         </div>
       </div>
-      <div className="hidden xl:block absolute -right-[22%] -top-[23%] overflow-hidden">
+      <div className="hidden xl:block absolute -right-[22%] -top-[130px] overflow-hidden">
         <Image src={bookURL} width={850} height={900} alt="book" className="" />
         <div className="text-white absolute left-[19%] bottom-[34%] border-[#8861FF] p-6 rounded-xl bg-[#25052A4D]">
           <p className="max-w-[400px] text-xl">{t["book text"]}</p>
